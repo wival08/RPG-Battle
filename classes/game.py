@@ -1,5 +1,4 @@
 import random
-from .magic import Spell
 
 
 class Colors:
@@ -102,9 +101,34 @@ class Person:
         while len(mp_bar) < 10:
             mp_bar += " "
 
+        hp_string = str(self.hp) + "/" + str(self.maxHp)
+        current_hp = ""
+
+        if len(hp_string) < 9:
+            hp_decrease = 9 - len(hp_string)
+
+            while hp_decrease > 0:
+                current_hp += " "
+                hp_decrease -= 1
+            current_hp += hp_string
+        else:
+            current_hp = hp_string
+
+        mp_string = str(self.mp) + "/" + str(self.maxMp)
+        current_mp = ""
+
+        if len(mp_string) < 7:
+            mp_decrease = 7 - len(mp_string)
+
+            while mp_decrease > 0:
+                current_mp += " "
+                mp_decrease -= 1
+            current_mp += mp_string
+        else:
+            current_mp = mp_string
+
         print("                     _________________________              __________ ")
         print(Colors.bold + self.name + "    " +
-              str(self.hp) + "/" + str(self.maxHp) + " |" + Colors.fail + hp_bar + Colors.endc + "|" +
-              Colors.bold + "    " +
-              str(self.mp) + "/" + str(self.maxMp) + " |" + Colors.okBlue + mp_bar + Colors.endc + "|")
+              current_hp + " |" + Colors.fail + hp_bar + Colors.endc + "|" + Colors.bold + "    " +
+              current_mp + " |" + Colors.okBlue + mp_bar + Colors.endc + "|")
 

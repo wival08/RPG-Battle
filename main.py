@@ -112,7 +112,7 @@ while running:
     enemy_choice = 1
 
     enemy_dmg = enemy.generate_damage()
-    player.take_damage([enemy_dmg])
+    player1.take_damage(enemy_dmg)
     print("Enemy attacks for", enemy_dmg, "points of damage.")
 
     print("---------------------------------------")
