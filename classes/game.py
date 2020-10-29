@@ -14,7 +14,7 @@ class Colors:
 
 
 class Person:
-    def __init__(self, hp, mp, atk, df, magic, items):
+    def __init__(self, name, hp, mp, atk, df, magic, items):
         self.maxHp = hp
         self.hp = hp
         self.maxMp = mp
@@ -24,6 +24,7 @@ class Person:
         self.df = df
         self.magic = magic
         self.items = items
+        self.name = name
         self.actions = ["Attack", "Magic", "Items"]
 
     def generate_damage(self):
@@ -57,6 +58,7 @@ class Person:
 
     def choose_action(self):
         i = 1
+        print("\n" + Colors.bold + self.name + Colors.endc)
         print(Colors.okBlue + Colors.bold + "ACTIONS" + Colors.endc)
         for action in self.actions:
             print("\t" + str(i) + ":", action)
@@ -79,4 +81,10 @@ class Person:
                   "(x" + str(item["quantity"]) + ")")
             i += 1
 
+    def get_stats(self):
+        print("                     _________________________            __________ ")
+        print(Colors.bold + self.name + "    " + str(self.hp) + "/" + str(self.maxHp) + " |" +
+              Colors.fail + "█████████████████████████" +
+              Colors.endc + "|" + Colors.bold + "    " + str(self.mp) + "/" + str(self.maxMp) + " |" +
+              Colors.okBlue + "██████████" + Colors.endc + "|")
 
