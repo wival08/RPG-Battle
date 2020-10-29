@@ -3,35 +3,35 @@ from classes.magic import Spell
 from classes.inventory import Item
 
 # Create Black Magic
-fire = Spell("Fire", 10, 100, "black")
-thunder = Spell("Thunder", 10, 100, "black")
-blizzard = Spell("Blizzard", 10, 100, "black")
-meteor = Spell("Meteor", 20, 200, "black")
-quake = Spell("Quake", 14, 140, "black")
+fire = Spell(name="Fire", cost=25, dmg=550, type="black")
+thunder = Spell(name="Thunder", cost=30, dmg=750, type="black")
+blizzard = Spell(name="Blizzard", cost=35, dmg=640, type="black")
+meteor = Spell(name="Meteor", cost=60, dmg=1600, type="black")
+quake = Spell(name="Quake", cost=45, dmg=870, type="black")
 
 # Create White Magic
-cure = Spell("Cure", 12, 120, "white")
-cura = Spell("Cura", 18, 200, "white")
-
-# Create some Items
-potion = Item("Potion", "potion", "Heals 50 HP", 50)
-hiPotion = Item("High Potion", "potion", "Heals 100 HP", 100)
-superPotion = Item("Super Potion", "potion", "Heals 500 HP", 500)
-elixer = Item("Elixer", "elixer", "Fully restores HP/MP of one party member", 9999)
-hiElixer = Item("Mega Elixer", "elixer", "Fully restores party's HP/MP", 9999)
-
-grenade = Item("Grenade", "attack", "Deals 500 damage", 500)
+cure = Spell(name="Cure", cost=35, dmg=620, type="white")
+cura = Spell(name="Cura", cost=60, dmg=1600, type="white")
 
 player_spells = [fire, thunder, blizzard, meteor, quake, cure, cura]
+
+# Create some Items
+potion = Item(name="Potion", type="potion", description="Heals 50 HP", prop=50)
+hiPotion = Item(name="High Potion", type="potion", description="Heals 100 HP", prop=100)
+superPotion = Item(name="Super Potion", type="potion", description="Heals 100 HP", prop=1000)
+elixer = Item(name="Elixer", type="elixer", description="Fully restores HP/MP of one party member", prop=9999)
+hiElixer = Item(name="Mega Elixer", type="elixer", description="Fully restores party's HP/MP", prop=9999)
+grenade = Item(name="Grenade", type="attack", description="Deals 500 damage", prop=500)
+
 player_items = [{"item": potion, "quantity": 5}, {"item": hiPotion, "quantity": 5},
                 {"item": superPotion, "quantity": 5}, {"item": elixer, "quantity": 5},
                 {"item": hiElixer, "quantity": 5}, {"item":grenade, "quantity": 5}]
 
 # Instantiate People
-player1 = Person("Varon:", 3300, 65, 60, 34, player_spells, player_items)
-player2 = Person("Erina:", 2500, 65, 60, 34, player_spells, player_items)
-player3 = Person("Karin:", 5000, 65, 60, 34, player_spells, player_items)
-enemy = Person("Baron", 1200, 65, 45, 25, [], [])
+player1 = Person(name="Varon:", hp=3300, mp=450, atk=350, df=34, magic=player_spells, items=player_items)
+player2 = Person(name="Erina:", hp=2500, mp=250, atk=200, df=34, magic=player_spells, items=player_items)
+player3 = Person(name="Karin:", hp=5000, mp=650, atk=400, df=34, magic=player_spells, items=player_items)
+enemy = Person(name="Baron", hp=12000, mp=500, atk=525, df=25, magic=[], items=[])
 
 players = [player1, player2, player3]
 
@@ -112,12 +112,11 @@ while running:
     enemy_choice = 1
 
     enemy_dmg = enemy.generate_damage()
-    player1.take_damage(enemy_dmg)
+    player.take_damage([enemy_dmg])
     print("Enemy attacks for", enemy_dmg, "points of damage.")
 
     print("---------------------------------------")
     print("\nEnemy HP : ", Colors.fail + str(enemy.get_hp()) + "/" + str(enemy.get_max_hp()) + Colors.endc + "\n")
-
 
     if enemy.get_hp() == 0:
         print(Colors.okGreen + "You win!" + Colors.endc)
