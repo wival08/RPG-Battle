@@ -13,7 +13,7 @@ quake = Spell(name="Quake", cost=45, dmg=870, type="black")
 # Create White Magic
 cure = Spell(name="Cure", cost=35, dmg=620, type="white")
 cura = Spell(name="Cura", cost=60, dmg=1600, type="white")
-curaga = Spell(name="Curaga", cost=50, dmg=6000, type="white")
+curaga = Spell(name="Curaga", cost=50, dmg=2000, type="white")
 
 player_spells = [fire, thunder, blizzard, meteor, quake, cure, cura]
 enemy_spells = [fire, meteor, curaga]
