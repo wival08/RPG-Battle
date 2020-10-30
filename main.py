@@ -205,7 +205,6 @@ while running:
 
             if spell.type == "white":
                 enemy.heal(magic_dmg)
-
                 print(Colors.okGreen + "\n" + spell.name + " heals " + enemy.name + "for", str(magic_dmg), "HP." +
                       Colors.endc)
 
@@ -213,8 +212,8 @@ while running:
                 target = random.randrange(0, 3)
                 players[target].take_damage(magic_dmg)
 
-                print(Colors.okBlue + "\n" + enemy.name.replace(" ", "") + "'s " + spell.name + " deals", str(magic_dmg),
-                      "points of damage to", players[target].name.replace(" ", "") + Colors.endc)
+                print(Colors.okBlue + "\n" + enemy.name.replace(" ", "") + "'s " + spell.name + " deals",
+                      str(magic_dmg), "points of damage to", players[target].name.replace(" ", "") + Colors.endc)
 
                 if players[target].get_hp() == 0:
                     print(players[target].name.replace(" ", "") + " has died.")
