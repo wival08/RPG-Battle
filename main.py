@@ -31,9 +31,9 @@ player_items = [{"item": potion, "quantity": 5}, {"item": hiPotion, "quantity": 
                 {"item": hiElixer, "quantity": 5}, {"item": grenade, "quantity": 5}]
 
 # Instantiate People
-player1 = Person(name="Varon:", hp=3300, mp=450, atk=350, df=34, magic=player_spells, items=player_items)
-player2 = Person(name="Erina:", hp=2500, mp=250, atk=200, df=34, magic=player_spells, items=player_items)
-player3 = Person(name="Karin:", hp=5000, mp=650, atk=400, df=34, magic=player_spells, items=player_items)
+player1 = Person(name="Varon ", hp=3300, mp=450, atk=350, df=34, magic=player_spells, items=player_items)
+player2 = Person(name="Erina ", hp=2500, mp=250, atk=200, df=34, magic=player_spells, items=player_items)
+player3 = Person(name="Karin ", hp=5000, mp=650, atk=400, df=34, magic=player_spells, items=player_items)
 players = [player1, player2, player3]
 enemy1 = Person(name="Nulle ", hp=3000, mp=100, atk=600, df=335, magic=enemy_spells, items=[])
 enemy2 = Person(name="Baron ", hp=12000, mp=500, atk=525, df=25, magic=enemy_spells, items=[])
@@ -43,19 +43,35 @@ enemies = [enemy1, enemy2, enemy3]
 running = True
 i = 0
 
-print(Colors.fail + Colors.bold + "\n\n\t\t\tAN ENEMY ATTACKS!" + Colors.endc)
+print(""""\n\n  _____  _____   _____            ____       _______ _______ _      ______ 
+ |  __ \|  __ \ / ____|          |  _ \   /\|__   __|__   __| |    |  ____|
+ | |__) | |__) | |  __   ______  | |_) | /  \  | |     | |  | |    | |__   
+ |  _  /|  ___/| | |_ | |______| |  _ < / /\ \ | |     | |  | |    |  __|  
+ | | \ \| |    | |__| |          | |_) / ____ \| |     | |  | |____| |____ 
+ |_|  \_\_|     \_____|          |____/_/    \_\_|     |_|  |______|______|
+""")
 
+print(Colors.fail + Colors.bold + """\n\t\t\t\t\t  MUSUH DATANG MENYERANG!
+\t\t   AYO KALAHKAN MUSUH-MUSUH YANG ADA DI DEPANMU!""" + Colors.endc)
 while running:
-    print("=======================================")
-
-    print("\n\n")
-    print("NAME                 HP                                   MP")
+    print("_______________________________________________________________________")
+    print(Colors.okGreen + Colors.bold + "\t\t\t\t\t\t\tSTATUS PEMAIN" + Colors.endc)
+    print("───────────────────────────────────────────────────────────────────────")
+    print("NAMA                 DARAH                                  MANA")
+    print("_______________________________________________________________________")
     for player in players:
         player.get_stats()
-    print("\n")
+    print("───────────────────────────────────────────────────────────────────────")
 
+    print("\n")
+    print("_______________________________________________________________________")
+    print(Colors.fail + Colors.bold + "\t\t\t\t\t\t\tSTATUS MUSUH" + Colors.endc)
+    print("───────────────────────────────────────────────────────────────────────")
+    print("NAMA                 DARAH                                     ")
+    print("_______________________________________________________________________")
     for enemy in enemies:
         enemy.get_enemy_stats()
+    print("───────────────────────────────────────────────────────────────────────")
 
     for player in players:
         player.choose_action()
