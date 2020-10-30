@@ -57,7 +57,7 @@ class Person:
 
     def choose_action(self):
         i = 1
-        print("\n" + Colors.bold + self.name + Colors.endc)
+        print("\nPEMAIN: " + Colors.bold + self.name + Colors.endc)
         print(Colors.okBlue + Colors.bold + "ACTIONS" + Colors.endc)
         for action in self.actions:
             print("\t" + str(i) + ":", action)
@@ -176,7 +176,7 @@ class Person:
 
         pct = self.hp / self.maxHp * 100
 
-        if self.mp < spell.cost or spell.type == "white" and pct:
+        if self.mp < spell.cost or spell.type == "white" and pct > 50:
             self.choose_enemy_spell()
         else:
             return spell, magic_dmg

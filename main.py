@@ -35,9 +35,9 @@ player1 = Person(name="Varon ", hp=3300, mp=450, atk=350, df=34, magic=player_sp
 player2 = Person(name="Erina ", hp=2500, mp=250, atk=200, df=34, magic=player_spells, items=player_items)
 player3 = Person(name="Karin ", hp=5000, mp=650, atk=400, df=34, magic=player_spells, items=player_items)
 players = [player1, player2, player3]
-enemy1 = Person(name="Nulle ", hp=3000, mp=100, atk=600, df=335, magic=enemy_spells, items=[])
-enemy2 = Person(name="Baron ", hp=12000, mp=500, atk=525, df=25, magic=enemy_spells, items=[])
-enemy3 = Person(name="Stan  ", hp=2400, mp=80, atk=750, df=150, magic=enemy_spells, items=[])
+enemy1 = Person(name="Nulle ", hp=3000, mp=1000, atk=600, df=335, magic=enemy_spells, items=[])
+enemy2 = Person(name="Baron ", hp=12000, mp=1500, atk=525, df=25, magic=enemy_spells, items=[])
+enemy3 = Person(name="Stan  ", hp=2400, mp=1000, atk=750, df=150, magic=enemy_spells, items=[])
 enemies = [enemy1, enemy2, enemy3]
 
 running = True
@@ -54,7 +54,7 @@ print(""""\n\n  _____  _____   _____            ____       _______ _______ _    
 print(Colors.fail + Colors.bold + """\n\t\t\t\t\t  MUSUH DATANG MENYERANG!
 \t\t   AYO KALAHKAN MUSUH-MUSUH YANG ADA DI DEPANMU!""" + Colors.endc)
 while running:
-    print("_______________________________________________________________________")
+    print("\n_______________________________________________________________________")
     print(Colors.okGreen + Colors.bold + "\t\t\t\t\t\t\tSTATUS PEMAIN" + Colors.endc)
     print("───────────────────────────────────────────────────────────────────────")
     print("NAMA                 DARAH                                  MANA")
@@ -196,8 +196,8 @@ while running:
             enemy_dmg = enemy.generate_damage()
 
             players[target].take_damage(enemy_dmg)
-            print(enemy.name.replace(" ", "") + "attacks" + players[target].name.replace(" ", "") + " for", enemy_dmg,
-                  "points of damage.")
+            print("\n" + Colors.fail + enemy.name.replace(" ", "") + " attacks " + players[target].name.replace(" ", "")
+                  + " for", enemy_dmg, "points of damage." + Colors.endc)
 
         elif enemy_choice == 1:
             spell, magic_dmg = enemy.choose_enemy_spell()
@@ -206,25 +206,16 @@ while running:
             if spell.type == "white":
                 enemy.heal(magic_dmg)
 
-                print(Colors.okBlue + "\n" + spell.name + " heals " + enemy.name + "for", str(magic_dmg), "HP." + Colors.endc)
+                print(Colors.okGreen + "\n" + spell.name + " heals " + enemy.name + "for", str(magic_dmg), "HP." +
+                      Colors.endc)
 
             elif spell.type == "black":
                 target = random.randrange(0, 3)
                 players[target].take_damage(magic_dmg)
 
                 print(Colors.okBlue + "\n" + enemy.name.replace(" ", "") + "'s " + spell.name + " deals", str(magic_dmg),
-                      "points of damage to ", players[target].name.replace(" ", "") + Colors.endc)
+                      "points of damage to", players[target].name.replace(" ", "") + Colors.endc)
 
                 if players[target].get_hp() == 0:
                     print(players[target].name.replace(" ", "") + " has died.")
                     del players[target]
-            #print("Enemy choose", spell, "damage is", magic_dmg)
-
-
-
-
-
-
-
-
-
